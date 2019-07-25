@@ -1,0 +1,52 @@
+#!/bin/sh -e
+
+usage(){
+    echo "Usage: $(basename $0) (amd64|i386|arm64|armhf) version"
+    exit 1
+}
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    usage
+fi
+
+BUILD=build
+TMP=${BUILD}/tmp
+APP_HOME=opt/adguardhome
+architecture=$1
+version=$2
+
+rm -Rf ${BUILD}
+mkdir -p ${BUILD}/release ${TMP}
+
+echo "Building version $version..."
+
+echo "* Retrieve artifact ${architecture} ${version} ..."
+case ${architecture} in
+    amd64)
+        arch=${architecture}
+        ;;
+    i386)
+        arch=386
+        ;;
+    arm64)
+        arch=${architecture}
+        ;;
+    armhf)
+        arch=arm
+esac
+[ -f /tmp/adguardhome-linux-${arch}.tar.bz2 ] || wget -O /tmp/adguardhome-linux-${arch}.tar.bz2 \
+    https://github.com/AdguardTeam/AdGuardHome/releases/download/v${version}/AdGuardHome_linux_arm.tar.gz
+
+echo "* Extract tar ..."
+mkdir -p ${TMP}/${APP_HOME}
+tar xf /tmp/adguardhome-linux-${arch}.tar.bz2 -C ${TMP}/${APP_HOME} --strip 1
+
+echo "* Create debian package ..."
+cp -R deb/* ${TMP}
+size=$(du -cs deb/ | sed '1!d' | grep -oe "^[0-9]*")
+sed -i 's/{{version}}/'${version}'/g;s/{{architecture}}/'${architecture}'/g;s/{{size}}/'${size}'/g' ${TMP}/DEBIAN/control
+chmod 0555 ${TMP}/DEBIAN/p*
+
+fakeroot dpkg-deb -b -z9 ${TMP} ${BUILD}/release
+
+echo done

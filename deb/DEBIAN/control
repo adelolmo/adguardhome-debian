@@ -1,0 +1,8 @@
+Package: adguardhome
+Version: {{version}}
+Priority: standard
+Section: misc
+Architecture: {{architecture}}
+Maintainer: Andoni del Olmo <andoni.delolmo@gmail.com>
+Installed-Size: {{size}}
+Description: Network-wide ads & trackers blocking DNS server
