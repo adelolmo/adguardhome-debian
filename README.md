@@ -21,8 +21,16 @@ Use `systemd` to manage the service `adguardhome`.
 # systemctl stop adguardhome
 # systemctl restart adguardhome
 ```
-Instructions of how to configure `AdGuardHome` are out of the scope of this readme.
 
+### How to configure
+
+The configuration file is located in `/etc/opt/adguardhome/AdGuardHome.yaml`.
+
+The log output is created in `/var/log/adguardhome/adguardhome.log`.
+
+AdGuardHome creates application files under `/var/opt/adguardhome` directory.
+
+Instructions of how to configure `AdGuardHome` are out of the scope of this readme.
 Refer to https://github.com/AdguardTeam/AdGuardHome/wiki for details about configuration.
 
 ## How to build
