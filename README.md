@@ -22,6 +22,8 @@ Use `systemd` to manage the service `adguardhome`.
 # systemctl restart adguardhome
 ```
 
+By default the dashboard is accessible under the port `http://localhost:3000`.
+
 ### How to configure
 
 The configuration file is located in `/etc/opt/adguardhome/AdGuardHome.yaml`.

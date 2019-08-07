@@ -3,3 +3,4 @@ dns:
   port: 53
   bootstrap_dns:
     - 1.1.1.1:53
+  safebrowsing_enabled: true
