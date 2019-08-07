@@ -1,14 +1,10 @@
 #!/bin/sh -e
 
-echo "postinst: $@"
-
 case "$1" in
     configure|reconfigure)
         mkdir -p /etc/opt/adguardhome
         mkdir -p /var/opt/adguardhome
         mkdir -p /var/log/adguardhome
-
-        touch /etc/opt/adguardhome/AdGuardHome.yaml
 
         systemctl daemon-reload
         systemctl enable adguardhome
