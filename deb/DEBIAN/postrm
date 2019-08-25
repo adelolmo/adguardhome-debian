@@ -8,6 +8,7 @@ case "$1" in
     purge)
         rm -rf /var/opt/adguardhome
         rm -rf /var/log/adguardhome
+        rm -rf /etc/opt/adguardhome/AdGuardHome.yaml
         if which ucf >/dev/null; then
             ucf --purge /etc/opt/adguardhome/AdGuardHome.yaml
         fi
