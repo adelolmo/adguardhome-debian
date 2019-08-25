@@ -6,6 +6,9 @@ case "$1" in
         mkdir -p /var/opt/adguardhome
         mkdir -p /var/log/adguardhome
 
+        ucf /opt/adguardhome/configuration /etc/opt/adguardhome/AdGuardHome.yaml
+        ucfr adguardhome /etc/opt/adguardhome/AdGuardHome.yaml
+
         systemctl daemon-reload
         systemctl enable adguardhome
         systemctl restart adguardhome
