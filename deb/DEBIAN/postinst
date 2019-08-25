@@ -8,7 +8,7 @@ case "$1" in
 
         systemctl daemon-reload
         systemctl enable adguardhome
-        systemctl start adguardhome
+        systemctl restart adguardhome
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
