@@ -8,8 +8,8 @@ For more information about `AdGuardHome`, please visit https://adguard.com/en/ad
 ## How to install
 Select the package for your architecture (amd64, i386, armhf, arm64). 
 ```
-$ wget https://github.com/adelolmo/adguardhome-debian/releases/download/v0.97.1/adguardhome_0.97.1_armhf.deb
-$ sudo dpkg -i adguardhome_0.97.1_armhf.deb
+wget -O adguardhome.deb https://github.com/adelolmo/adguardhome-debian/releases/download/v0.98.1/adguardhome_0.98.1_armhf.deb
+sudo dpkg -i adguardhome.deb
 ```
 
 ### How to use
@@ -17,9 +17,9 @@ $ sudo dpkg -i adguardhome_0.97.1_armhf.deb
 Use `systemd` to manage the service `adguardhome`.
 
 ```
-# systemctl start adguardhome
-# systemctl stop adguardhome
-# systemctl restart adguardhome
+sudo systemctl start adguardhome
+sudo systemctl stop adguardhome
+sudo systemctl restart adguardhome
 ```
 
 By default the dashboard is accessible under the port `http://localhost:3000`.
@@ -40,13 +40,13 @@ Refer to https://github.com/AdguardTeam/AdGuardHome/wiki for details about confi
 Clone the project.
 
 ```
-$ git clone https://github.com/adelolmo/adguardhome-debian.git
+git clone https://github.com/adelolmo/adguardhome-debian.git
 ```
 
 Then run the `package` script to download the create the package.
 
 ```
-$ ./package armhf 0.97.1
+./package armhf 0.97.1
 ```
 The first parameter is the system architecture, it must be one of: amd64, i386, armhf, arm64. 
 
