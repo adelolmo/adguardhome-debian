@@ -21,19 +21,11 @@ mkdir -p ${BUILD}/release ${TMP}
 echo "Building version $version..."
 
 echo "* Retrieve artifact ${architecture} ${version} ..."
-case ${architecture} in
-    amd64)
-        arch=${architecture}
-        ;;
-    i386)
-        arch=386
-        ;;
-    arm64)
-        arch=${architecture}
-        ;;
-    armhf)
-        arch=arm
-esac
+[ "$architecture" = "amd64" ] && arch=${architecture}
+[ "$architecture" = "i386" ] && arch=386
+[ "$architecture" = "arm64" ] && arch=${architecture}
+[ "$architecture" = "armhf" ] && arch=arm
+
 [ -f /tmp/adguardhome-linux-${arch}.tar.bz2 ] || wget -O /tmp/adguardhome-linux-${arch}.tar.bz2 \
     https://github.com/AdguardTeam/AdGuardHome/releases/download/v${version}/AdGuardHome_linux_arm.tar.gz
 
