@@ -26,12 +26,12 @@ echo "* Retrieve artifact ${architecture} ${version} ..."
 [ "$architecture" = "arm64" ] && arch=${architecture}
 [ "$architecture" = "armhf" ] && arch=arm
 
-[ -f /tmp/adguardhome-linux-${arch}.tar.bz2 ] || wget -O /tmp/adguardhome-linux-${arch}.tar.bz2 \
+[ -f /tmp/adguardhome-linux-${arch}-${version}.tar.bz2 ] || wget -O /tmp/adguardhome-linux-${arch}-${version}.tar.bz2 \
     https://github.com/AdguardTeam/AdGuardHome/releases/download/v${version}/AdGuardHome_linux_${arch}.tar.gz
 
 echo "* Extract tar ..."
 mkdir -p ${TMP}/${APP_HOME}
-tar xf /tmp/adguardhome-linux-${arch}.tar.bz2 -C ${TMP}/${APP_HOME} --strip 1
+tar xf /tmp/adguardhome-linux-${arch}-${version}.tar.bz2 -C ${TMP}/${APP_HOME} --strip 1
 
 echo "* Create debian package ..."
 cp -R deb/* ${TMP}
