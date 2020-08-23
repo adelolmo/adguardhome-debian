@@ -9,9 +9,8 @@ UMask=022
 StartLimitInterval=5
 StartLimitBurst=10
 ExecStart=/opt/adguardhome/AdGuardHome --config /etc/opt/adguardhome/AdGuardHome.yaml --work-dir /var/opt/adguardhome --logfile /var/log/adguardhome/adguardhome.log --no-check-update
-ExecStop=/opt/adguardhome/AdGuardHome --service stop
 Restart=on-failure
-RestartSec=120
+RestartSec=10
 StandardOutput=syslog+console
 SyslogIdentifier=adguardhome
 

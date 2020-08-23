@@ -24,7 +24,7 @@ echo "* Retrieve artifact ${architecture} ${version} ..."
 [ "$architecture" = "amd64" ] && arch=${architecture}
 [ "$architecture" = "i386" ] && arch=386
 [ "$architecture" = "arm64" ] && arch=${architecture}
-[ "$architecture" = "armhf" ] && arch=arm
+[ "$architecture" = "armhf" ] && arch=armv7
 
 [ -f /tmp/adguardhome-linux-${arch}-${version}.tar.bz2 ] || wget -O /tmp/adguardhome-linux-${arch}-${version}.tar.bz2 \
     https://github.com/AdguardTeam/AdGuardHome/releases/download/v${version}/AdGuardHome_linux_${arch}.tar.gz
