@@ -31,7 +31,7 @@ echo "* Retrieve artifact ${architecture} ${version} ..."
 
 echo "* Extract tar ..."
 mkdir -p ${TMP}/${APP_HOME}
-tar xf /tmp/adguardhome-linux-${arch}-${version}.tar.bz2 -C ${TMP}/${APP_HOME} --strip 1
+tar xf /tmp/adguardhome-linux-${arch}-${version}.tar.bz2 -C ${TMP}/${APP_HOME} --strip-components 2
 
 echo "* Create debian package ..."
 cp -R deb/* ${TMP}
