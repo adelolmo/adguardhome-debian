@@ -2,16 +2,13 @@
 
 case "$1" in
     remove)
-        systemctl daemon-reload
+        systemctl disable --now adguardhome
     ;;
 
     purge)
         rm -rf /var/opt/adguardhome
         rm -rf /var/log/adguardhome
-        rm -rf /etc/opt/adguardhome/AdGuardHome.yaml
-        if which ucf >/dev/null; then
-            ucf --purge /etc/opt/adguardhome/AdGuardHome.yaml
-        fi
+        rm -f /etc/opt/adguardhome.yaml
     ;;
 
     disappear|upgrade|failed-upgrade|abort-install|abort-upgrade)

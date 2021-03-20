@@ -2,15 +2,14 @@
 
 case "$1" in
     configure|reconfigure)
-        mkdir -p /etc/opt/adguardhome
         mkdir -p /var/opt/adguardhome
         mkdir -p /var/log/adguardhome
 
-        ucf /usr/share/adguardhome/configuration /etc/opt/adguardhome/AdGuardHome.yaml
-        ucfr adguardhome /etc/opt/adguardhome/AdGuardHome.yaml
+        [ -f /etc/opt/adguardhome/AdGuardHome.yaml ] && \
+          mv /etc/opt/adguardhome/AdGuardHome.yaml /etc/opt/adguardhome.yaml
+        rm -rf /etc/opt/adguardhome
 
-        systemctl daemon-reload
-        systemctl enable adguardhome
+        systemctl enable --now adguardhome
         systemctl restart adguardhome
     ;;
 

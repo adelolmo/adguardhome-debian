@@ -1,0 +1,6 @@
+/var/log/adguardhome/adguardhome.log {
+	missingok
+	notifempty
+	compress
+	delaycompress
+}
