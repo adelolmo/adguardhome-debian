@@ -41,7 +41,7 @@ package: clean prepare $(TAR_CACHE) cp control
 	fakeroot dpkg-deb -b -z9 $(TMP_DIR) $(RELEASE_DIR)
 
 clean:
-	rm -rf $(TMP_DIR) $(RELEASE_DIR)
+	rm -rf $(TMP_DIR)
 
 prepare:
 	mkdir -p $(RELEASE_DIR) $(TMP_DIR)/$(APP_HOME)
