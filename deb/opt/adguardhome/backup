@@ -1,0 +1,19 @@
+#!/bin/sh -e
+
+WORKDIR=/var/opt/adguardhome
+OUTPUT_DIR=.
+
+for arg in "$@"; do
+	case $arg in
+	-d)
+		OUTPUT_DIR="$2"
+		shift # Remove argument name from processing
+		shift # Remove argument value from processing
+		;;
+	esac
+done
+
+file=adguardhome-$(date +"%Y-%m-%d").tar.gz
+echo "Exporting to ${OUTPUT_DIR}/${file} ..."
+sudo tar zcfP "${OUTPUT_DIR}/${file}" "${WORKDIR}"
+echo "done"
