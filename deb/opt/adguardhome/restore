@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+file=${1}
+
+if [ -z "${file}" ]; then
+	echo "Missing file parameter"
+	echo "e.g. ${0} /some-dir/adguardhome-2021-09-01.tar.gz"
+	exit 1
+fi
+
+echo "Restoring ${file} ..."
+sudo tar xzf "${file}" -C /
+echo "done"
